@@ -32,8 +32,8 @@
 		76C860002E2BE00400577863 = {
 			isa = PBXGroup;
 			children = (
-				76C8600B2E2BE00400577863 /* SnugSpace */,
 				76C8600A2E2BE00400577863 /* Products */,
+				76C8600B2E2BE00400577863 /* SnugSpace */,
 			);
 			sourceTree = "<group>";
 		};
