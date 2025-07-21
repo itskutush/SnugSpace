@@ -19,14 +19,7 @@ struct ListingItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8){
             //image
-            TabView{
-                ForEach(images, id: \.self){
-                    image in
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
-                }
-            }
+            ListingItemCarouselView()
             .frame(height: 320)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .tabViewStyle(.page)
