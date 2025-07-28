@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import MapKit
 struct LisitingDetailView: View {
     
     var images = [
@@ -16,10 +16,32 @@ struct LisitingDetailView: View {
         "listing-4"
     ]
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ScrollView{
-            ListingItemCarouselView()
-                .frame(height: 320)
+            ZStack(alignment: .topLeading){
+                ListingItemCarouselView()
+                    .frame(height: 320)
+                
+                Button{
+                    dismiss()
+                }
+                label : {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.black)
+                        .background{
+                            Circle()
+                                .fill(.white)
+                                .frame(width : 32 , height : 32)
+                        }
+                        .padding(32)
+                }
+            }
+            
+                
+           
+            
             VStack(alignment: .leading,spacing: 8){
                 Text("Miami Villa")
                     .font(.title)
@@ -46,6 +68,7 @@ struct LisitingDetailView: View {
             .padding(.leading)
             .frame(maxWidth: .infinity,alignment: .leading)
             //Entire villa by John Smith
+          
             Divider()
            
             HStack{
@@ -74,6 +97,7 @@ struct LisitingDetailView: View {
                 }
             .padding()
             .frame(maxWidth: .infinity,alignment: .leading)
+           
             Divider()
           
             // SuperHost text
@@ -96,6 +120,7 @@ struct LisitingDetailView: View {
                 
             }
             .padding()
+           
             Divider()
             
             VStack(alignment: .leading,spacing: 16){
@@ -124,8 +149,73 @@ struct LisitingDetailView: View {
                 
             }
             .padding()
+            //Lisitng amenties
+            VStack(alignment: .leading,spacing : 16){
+                Text("What this place offers")
+                    .font(.headline)
+                    ForEach (1..<5,id: \.self){ feature in
+                        HStack{
+                            Image(systemName: "wifi")
+                                .frame(width: 32)
+                            Text("Wifi")
+                                .font(.footnote)
+                            Spacer()
+                        
+                    }
+                }
+            }
+            .padding()
             
+            Divider()
+        
+            //Map
+            VStack(alignment: .leading,spacing : 16){
+                Text("Where you'll live")
+                    .font(.headline)
+                
+               Map()
+                    .frame(height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            .padding()
             
+        }
+        .ignoresSafeArea()
+        .padding(.bottom, 64)
+        .overlay(alignment: .bottom){
+            VStack{
+                Divider()
+                    .padding(.bottom)
+                HStack{
+                    VStack(alignment : .leading){
+                        Text("$500")
+                            .font(.headline)
+                        Text("Total before taxes")
+                            .font(.footnote)
+                        Text("Oct 15-20")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .underline()
+                    }
+                    Spacer()
+                    
+                    Button{
+                        
+                    }label: {
+                        Text("Reserve")
+                            .foregroundStyle(.white)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .frame(width: 140 , height : 40)
+                            .background(.pink)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    
+                }
+                .padding(.horizontal,32)
+            }
+            .background(.white)
+            .cornerRadius(10)
         }
     }
 }

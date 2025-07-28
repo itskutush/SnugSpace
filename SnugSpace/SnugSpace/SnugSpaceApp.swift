@@ -11,7 +11,9 @@ import SwiftUI
 struct SnugSpaceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                ExploreView()
+            }
         }
     }
 }
