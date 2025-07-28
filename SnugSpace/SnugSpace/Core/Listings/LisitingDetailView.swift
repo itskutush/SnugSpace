@@ -45,11 +45,12 @@ struct LisitingDetailView: View {
             }
             .padding(.leading)
             .frame(maxWidth: .infinity,alignment: .leading)
-            
+            //Entire villa by John Smith
             Divider()
+           
             HStack{
                 VStack(alignment: .leading,spacing: 8){
-                    Text("Enter villa hosted by John Smith")
+                    Text("Entire villa hosted by John Smith")
                         .fontWeight(.semibold)
                     HStack{
                         Text("4 guests")
@@ -74,7 +75,8 @@ struct LisitingDetailView: View {
             .padding()
             .frame(maxWidth: .infinity,alignment: .leading)
             Divider()
-            
+          
+            // SuperHost text
             VStack(alignment : .leading,spacing: 16){
                 ForEach(0..<2) { feature in
                     HStack(spacing: 12) {
@@ -95,6 +97,34 @@ struct LisitingDetailView: View {
             }
             .padding()
             Divider()
+            
+            VStack(alignment: .leading,spacing: 16){
+                Text("Where you'll sleep")
+                    .font(.headline)
+                ScrollView (.horizontal,showsIndicators: false){
+                    HStack(spacing: 16){
+                        ForEach(1..<5, id: \.self) { bedroom in
+                            VStack {
+                                Image(systemName: "bed.double")
+                                
+                                Text("Bedroom \(bedroom)")
+                            }
+                            .frame(width: 132, height: 100)
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(lineWidth: 1)
+                                    .foregroundStyle(.gray)
+                            }
+                        
+                        }
+
+                    }
+                    
+                }
+                
+            }
+            .padding()
+            
             
         }
     }
